@@ -1,29 +1,33 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
+public class Solution {
+    
+    public static void input()
+        {
+        int linecount=0,number=0,leftcount=0,i=0;
+         Scanner in = new Scanner(System.in);
+         number =Integer.parseInt(in.nextLine());
+         leftcount=number-1;         
+         while(linecount<number)
+             {
+             i=0;
+             for(;i<leftcount;i++)
+                    System.out.print(" ");
+             for(;i<number;i++)
+                   System.out.print("#");
+             leftcount--;
+             linecount++;
+             System.out.println();
+             }  
+        
+        }
 
-public class Staircase 
-{
-	
-	public static void main(String[] args) 
-	{
-		Scanner s=new Scanner(System.in);
-		int N=s.nextInt();
-       for(int i=1;i<=N;i++)
-       {
-    	   int x=N-i;
-    	   while(x>0)
-    		   {
-    		    System.out.print(" ");
-    		   x--;
-    		   }
-    	   int j=i;
-    	   while(j>0)
-    	   {
-    		   System.out.print("#");
-    		   j--;
-    	   }
-    	   System.out.println();
-       }
-	}
-
+    public static void main(String[] args) 
+    {
+       input();
+    }
 }
