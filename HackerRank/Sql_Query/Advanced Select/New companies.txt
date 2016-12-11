@@ -1,0 +1,2 @@
+select c.Company_code,c.founder,count(Distinct(L.lead_manager_code)),count(Distinct(sm.senior_manager_code)),count(Distinct(m.manager_code)),count(Distinct(e.employee_code)) from Company c join Lead_Manager L join Senior_Manager sm join Manager m join Employee E where c.company_code=L.company_code and sm.company_code=c.company_code and c.company_code=m.company_code and E.company_code=c.company_code group by c.company_code order by c.company_code asc
+

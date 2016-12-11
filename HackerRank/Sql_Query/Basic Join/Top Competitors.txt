@@ -1,0 +1,1 @@
+select h.hacker_id,h.name from Hackers h join Challenges c join submissions s join Difficulty d where h.hacker_id=s.hacker_id and s.challenge_id=c.challenge_id and d.difficulty_level=c.difficulty_level and d.score=s.score group by s.hacker_id having count(c.challenge_id)>1 order by count(c.challenge_id) desc,h.hacker_id asc
