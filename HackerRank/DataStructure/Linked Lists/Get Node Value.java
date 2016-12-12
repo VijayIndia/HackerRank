@@ -10,19 +10,17 @@
     
 int GetNode(Node head,int n) 
 {
-    int count=0;
-    Node temp=head;
-while(temp.next!=null)
+    Node firstptr=head,secondptr=head;
+    while(n>0 && firstptr!=null)
     {
-    count++;
-    temp=temp.next;
+        firstptr=firstptr.next;
+        n--;
     }
-    count=count-n;
-    temp=head;
-while(count>0)
+    while(firstptr.next!=null)
     {
-    temp=temp.next;
-    count--;
+        firstptr=firstptr.next;
+        secondptr=secondptr.next;
     }
-    return temp.data;
+    return secondptr.data;
 }
+
