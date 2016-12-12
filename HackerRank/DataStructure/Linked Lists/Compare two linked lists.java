@@ -8,26 +8,18 @@
   }
 */
 int CompareLists(Node headA, Node headB) 
-{
-    int x=3;
-if(headA.next!=null && headB.next!=null && headA.data==headB.data)
-    {
-    x=CompareLists(headA.next,headB.next);
-    }
- else if(headA.data!=headB.data)
-     {
-     return 0;
-     }
-else if(headA.next!=null)
-    {
+{  
+       while(headA!=null && headB!=null)
+            {                   
+                    if(headA.data!=headB.data)
+                           return 0;
+                    headA=headA.next;
+                    headB=headB.next;         
+                    
+            }
+      if(headA==null && headB==null)
+           return 1;
+      if(headA==null || headB==null)
+           return 0;
     return 0;
-    }
-else if(headB.next!=null)
-    {
-    return 0;
-    }
-    if(x==0)
-        return x;
-    else 
-        return 1;
 }
