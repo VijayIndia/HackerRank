@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Arrays_DS 
 {
-    Array_DS()
+    Arrays_DS()
         {
                 Scanner s=new Scanner(System.in);
                     int N=s.nextInt();
