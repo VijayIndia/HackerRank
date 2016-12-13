@@ -1,65 +1,34 @@
-import java.util.Scanner;
+import java.util.*;
 
-
-public class Funny_String
+public class Solution 
 {
-
-	 public String reverse(String Last)
-	   {
-		  int Last_length=Last.length();
-		  int Str_length=Last.length()-1;
-		  int i=0;
-		 char rev_string[]=new char[Last_length];
-		  while(i<Last_length)
-		  {
-			  rev_string[i]=Last.charAt(Str_length);
-			  i++;		  
-			  Str_length--;
-		  }
-		  String Last_str= new String(rev_string);
-		   return Last_str;
-	   }
-
-	public static void main(String[] args) 
-	{
-		Scanner s=new Scanner(System.in);
-		Funny_String fs=new Funny_String();
-		try
+    public boolean input(String str)
+        {            
+            char ch[]=str.toCharArray();
+            int strlength=str.length()-1;
+            for(int i=0;i<strlength;i++)
+                {
+                if(Math.abs(ch[i+1]-ch[i])!=Math.abs(ch[strlength-i]-ch[strlength-i-1]))
+                        return false;
+                }    
+            return true;
+        }
+    public static void main(String[] args) 
+    {
+        String str="";
+        boolean result=false;
+        Solution obj=new Solution();
+        Scanner s=new Scanner(System.in);
+        int n=Integer.parseInt(s.nextLine());
+        while(n>0)
             {
-        int T=Integer.parseInt(s.nextLine());
-     while(T>=1 && T<=10)
-     {
-    	 String str=s.nextLine();
-    	 String rev_str=fs.reverse(str);
-    	 int i=0,j=1,flag=0;
-    	 Exit:
-    	 while(i<str.length()-1 && str.length()>=2 && str.length()<=10000)
-    	 {
-    		 if(j<str.length())
-    		 {
-    			 int x=str.charAt(j)-str.charAt(i);//(0,1),(1,2),(2,3)
-    			 int y=rev_str.charAt(j)-rev_str.charAt(i);
-    					 if(Math.abs(x)!=Math.abs(y))
-    					 {
-    						 System.out.println("Not Funny");
-    						 flag=1;
-    						 break Exit;
-    					 }
-    				 j++;
-    		 }
-    		 i++;
-    	 }
-    	 if(flag==0)
-    		 System.out.println("Funny");
-    	T--; 
+            str=s.nextLine();
+            result=obj.input(str);
+            if(result)
+                System.out.println("Funny");            
+            else
+                System.out.println("Not Funny");            
+             n--;
+            }
      }
-        }
-        catch(Exception e)
-            {
-            
-        }
-        finally
-            {s.close();}
-	}
-
 }
