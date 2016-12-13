@@ -1,87 +1,50 @@
-import java.util.Scanner;
-public class Love_Letter_Mystery 
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution 
 {
-   public void comparison(String First,String Last)
-   {
-	   int i=0,count=0;
-	   while(i<First.length())
-	   { 
-		   int l=First.charAt(i);
-		   int m=Last.charAt(i);
-				if(l<m &&m>=97)
-				{
-				  	count+=m-l;
-				}				
-				else if(l>m && l>=97)
-				{
-				  	count+=l-m;
-				}
-		  
-		   i++;
-	   }
-	   System.out.println(count);
-   }
-   public String reverse(String Last)
-   {
-	  int Last_length=Last.length();
-	  int Str_length=Last.length()-1;
-	  int i=0;
-	 char rev_string[]=new char[Last_length];
-	  while(i<Last_length)
-	  {
-		  rev_string[i]=Last.charAt(Str_length);
-		  i++;		  
-		  Str_length--;
-	  }
-	  String Last_str= new String(rev_string);
-	   return Last_str;
-   }
+    public int input(String str)
+        {            
+            String str1=null,str2=null;
+            int strlength=str.length();
+           
+            int diff=0;
+            int halfstrlength=strlength/2;
+            str1=str.substring(0,halfstrlength);
+            if(strlength%2==0)
+                str2=str.substring(halfstrlength,strlength);
+            else
+                str2=str.substring(halfstrlength+1,strlength);
+            for(int i=0;i<halfstrlength;i++)
+               diff+=Math.abs(str1.charAt(i)-str2.charAt(halfstrlength-1-i));
+            return diff;
+        }
 
-	public static void main(String[] args)
-	{
-		Love_Letter_Mystery L=new Love_Letter_Mystery();
-		Scanner s=new Scanner(System.in);
-		try
-		{
-		int T=Integer.parseInt(s.nextLine());
-		while(T>0)
-		{
-		String str=s.nextLine();
-		int str_length=str.length();
-		String First=null,Last=null;
-		if(str_length>=1 && str_length<=10000)
-		{
-		if(str_length%2==0)
-		{
-			First=str.substring(0,(str_length)/2);
-			Last=str.substring((str_length)/2,str.length());
-			
-		}
-		else if(str_length%2==1)
-		{
-			First=str.substring(0,(str_length-1)/2);
-			Last=str.substring(((str_length)/2)+1,str.length());
-		}
-		Last=L.reverse(Last);
-		if(!(First.equals(Last)))
-		{
-		 L.comparison(First,Last);	
-		}
-		else
-			System.out.println(0);
-		}
-		}
-		T--;
-		s.close();
-		}
-		catch(Exception e)
-		{
-			
-		}
-		finally
-		{
-			s.close();
-		}
-	}
-
+    public static void main(String[] args) 
+        {
+            Solution obj=new Solution();
+            Scanner s=new Scanner(System.in);
+            int n=Integer.parseInt(s.nextLine());    
+            String str=null;
+            int result=0,strlength=0;
+            if(n>10 || n<1)
+                return;
+            while(n>0)
+            {
+                str=s.nextLine();
+                strlength=str.length();
+                if(strlength>Math.pow(10,4) || strlength <1)
+                        return;
+                Pattern p=Pattern.compile("[^a-z]");
+                Matcher m=p.matcher(str);
+                if(m.find())
+                    return;
+                result=obj.input(str);
+                System.out.println(result);
+                n--;
+            }
+        }
 }
