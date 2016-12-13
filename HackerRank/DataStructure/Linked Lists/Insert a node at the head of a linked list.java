@@ -10,19 +10,12 @@
 // This is a "method-only" submission. 
 // You only need to complete this method. 
 
-Node Insert(Node head,int x) 
+Node Insert(Node head,int x)
 {
-    Node new_temp=new Node();
-    new_temp.data=x;
-    new_temp.next=null;
-if(head==null)
-    {
-    head=new_temp;    
-    }
-    else if(head!=null)
-     {
-      new_temp.next=head;
-       head=new_temp;
-    }
+    Node newtemp=new Node();
+    newtemp.data=x;
+    newtemp.next=head;
+    head=newtemp;
     return head;
 }
+
