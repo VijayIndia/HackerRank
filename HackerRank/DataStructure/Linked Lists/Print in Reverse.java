@@ -10,13 +10,10 @@
     // This is a "method-only" submission. 
     // You only need to complete this method. 
 
-void ReversePrint(Node head) //1 2 3 4 5
+void ReversePrint(Node head) 
 {
-    if(head!=null)
-        {
-        if(head.next!=null)
-            ReversePrint(head.next);
-        System.out.println(head.data);
-        } 
-    
+    if(head==null)
+          return;
+    ReversePrint(head.next);
+    System.out.println(head.data);
 }
