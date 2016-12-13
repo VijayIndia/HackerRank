@@ -6,22 +6,21 @@ Node is defined as
   }
 */
 
-Node RemoveDuplicates(Node head)//temp=1->3 6 6  temp_next=1
+Node RemoveDuplicates(Node head)
 {
-Node temp=head;
+  Node temp=head,temp_next=null;
     if(temp!=null)
     {
-    while(temp.next!=null)
+        temp_next=temp.next;
+    while(temp_next!=null)
         {
-          Node temp_next=temp.next;
-          if(temp_next.data==temp.data)
+          if(temp.data==temp_next.data)
               {
               temp.next=temp_next.next;
               }
           else
-              {
               temp=temp.next;
-              }
+           temp_next=temp_next.next;
         }
     }
     return head;
