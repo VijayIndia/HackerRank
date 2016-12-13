@@ -8,33 +8,29 @@
 
 void decode(String S ,Node root)
     {
-    
-    if(S!=null)
+     Node temp=root;
+     String decode=null;
+    int j=0;
+    while(j<S.length())
         {
-        Node temp=root;
-        for(int i=0;i<S.length();)
-         {       
-         if(S.charAt(i)=='0')
+          if(S.charAt(j)=='0')
+          {
+              temp=temp.left;
+          }
+          else if(S.charAt(j)=='1')
+             {
+                temp=temp.right;
+             } 
+          if(temp.data!='\0')
             {
-            temp=temp.left;
-            }
-        else if(S.charAt(i)=='1')
-            {
-            temp=temp.right;
-            }
-        if(temp.left!=null || temp.right!=null)
-            {
-            i++;
-            }
-        else if(temp.left==null && temp.right==null)
-           {
-           System.out.print(temp.data);
-            S=S.substring(i+1,S.length());
-            decode(S,root);
-            break;
-           }
-        }
-        }
+              if(decode==null)
+                  decode=String.valueOf(temp.data);
+              else
+                  decode+=String.valueOf(temp.data);
+              temp=root;
+          }
+        j++;
+    }
+        System.out.println(decode);
         
-       
     }
