@@ -19,14 +19,12 @@ Node Insert(Node head,int data)
     else if(head!=null)
         {
         Node temp=head;
-        while(temp.next!=null)
-            {
-            temp=temp.next;
-            }
+        while(temp.next.next!=null)
+             temp=temp.next.next;
         if(temp.next==null)
-            {
             temp.next=new_temp;
-            }
+        else if(temp.next.next==null)
+          temp.next.next=new_temp;
         }   
     return head;
 }
