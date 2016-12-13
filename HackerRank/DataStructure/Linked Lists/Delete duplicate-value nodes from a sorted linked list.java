@@ -8,20 +8,18 @@ Node is defined as
 
 Node RemoveDuplicates(Node head)
 {
-  Node temp=head,temp_next=null;
-    if(temp!=null)
-    {
-        temp_next=temp.next;
+  Node temp=head,temp_next=head.next;
     while(temp_next!=null)
-        {
-          if(temp.data==temp_next.data)
+    {
+        if(temp.data!=temp_next.data)
+               {
+                temp=temp.next;
+               }
+         else 
               {
-              temp.next=temp_next.next;
+                temp.next=temp.next.next;
               }
-          else
-              temp=temp.next;
-           temp_next=temp_next.next;
-        }
+          temp_next=temp.next;
     }
     return head;
 }
