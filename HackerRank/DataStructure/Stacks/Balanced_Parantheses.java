@@ -1,78 +1,38 @@
-import java.util.Scanner;
+import java.util.*;
 
-
-public class Balanced_Parantheses //{->{->}->}
+public class Solution 
 {
-	Node root;
-  public  void push_pop(char data)
-   {
-	   Node prev=null;
-	   Node new_temp=new Node(data,null);
-	   if(root==null)
-	   {
-		   root=new_temp;
-	   }
-	   else if (root!=null)
-	   {
-		   Node temp=root;
-		   while(temp.next!=null)
-		   {
-			   prev=temp;
-			   temp=temp.next;
-		   }
-		     if((temp.data+1)==new_temp.data||(temp.data+2)==new_temp.data)
-			  {
-			   if(root==temp && temp.next==null)
-                  {
-				   root=null;
-                  }
-			   else
-			   {
-				   prev.next=null;
-			   }
-			   temp=null;
-			  }
-		   else
-			   {
-			   temp.next=new_temp;
-			   }
+    public void input()
+        {
+           Scanner in = new Scanner(System.in);
+           int n=Integer.parseInt(in.nextLine());
+           while(n>0)
+               {
+               Stack<Integer> st=new Stack<Integer>();
+               String str=in.nextLine();
+               int strlength=str.length();
+               int i=0;
+               while(i<strlength)
+                   {
+                    int j=((int)str.charAt(i));
+                    if(!st.empty() && ((st.peek()+1)==j || ((st.peek()+2)==j)))
+                        st.pop();
+                    else  
+                        st.push(j);
+                   i++;
+                   }
+                if(st.empty())
+                    System.out.println("YES");
+                else
+                    System.out.println("NO");
+                n--;
+               }
+        
+        }
 
-	   }
-   }  
-	
-	public static void main(String[] args) 
-	{
-       Scanner s=new Scanner(System.in);
-       Balanced_Parantheses b=new Balanced_Parantheses();
-       int T=Integer.parseInt(s.nextLine());
-       while(T>0)
-       {
-    	   String str=s.nextLine();
-    	   char ch[]=str.toCharArray();
-    	   for(int i=0;i<str.length();i++)
-    		   {
-    		   b.push_pop(ch[i]);
-    		   }
-    	   if(b.root!=null)
-    		   System.out.println("NO");
-    	   else
-    		   System.out.println("YES");
-    	   b.root=null;
-    	   T--;
-       }
-	}
-	public static class Node
-	{
-		
-		Node next;
-		char data;
-
-		Node(char data,Node next)
-		{
-			this.data=data;
-			this.next=next;
-		}
-	}
-	
-
+    public static void main(String[] args) 
+    {
+      Solution obj=new Solution();
+      obj.input();
+    }
 }
